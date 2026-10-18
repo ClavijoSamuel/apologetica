@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Samuel Clavijo Apologética</title>
+<meta name="description" content="Canal de apologética católica de Samuel Clavijo: diálogo con los hermanos protestantes a la luz de la Escritura, los Padres de la Iglesia y el Magisterio.">
+<meta name="theme-color" content="#EADCB8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pergamino: #EADCB8;
+    --pergamino-claro: #F5EBD0;
+    --tinta: #2B1D16;
+    --tinta-suave: #5B4535;
+    --burdeos: #6B1428;
+    --burdeos-hondo: #44091A;
+    --oro: #B08D3A;
+    --oro-claro: #E2C36E;
+    --titulos: "IM Fell English", "EB Garamond", Georgia, serif;
+    --texto: "EB Garamond", Garamond, Georgia, serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background-color: var(--pergamino);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .25  0 0 0 0 .1  0 0 0 .12 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    color: var(--tinta);
+    font-family: var(--texto);
+    font-size: 1.2rem;
+    line-height: 1.65;
+  }
+
+  /* Bordes del pergamino envejecido */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(255, 250, 235, .35) 0%, rgba(255, 250, 235, 0) 50%, rgba(120, 70, 20, .28) 100%);
+    z-index: 0;
+  }
+
+  main, footer { position: relative; z-index: 1; }
+
+  .pagina {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: clamp(1rem, 4vw, 2.5rem) clamp(1rem, 4vw, 1.5rem) 2rem;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--burdeos-hondo);
+    outline-offset: 4px;
+  }
+
+  /* Portada: la página se abre como el frontispicio de un libro antiguo */
+  .portada {
+    position: relative;
+    border: 2px solid var(--burdeos);
+    background: rgba(245, 235, 208, .35);
+    padding: clamp(2.2rem, 7vw, 4.5rem) clamp(1.5rem, 6vw, 3.5rem);
+    text-align: center;
+  }
+
+  .portada::before {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    border: 1px solid var(--oro);
+    pointer-events: none;
+  }
+
+  .portada .cruz {
+    display: block;
+    width: clamp(4rem, 12vw, 5.5rem);
+    height: auto;
+    margin: 0 auto 1.5rem;
+    color: var(--burdeos);
+  }
+
+  h1 {
+    margin: 0 0 1rem;
+    font-family: var(--titulos);
+    font-weight: 400;
+    font-size: clamp(2.4rem, 9vw, 4.2rem);
+    line-height: 1.08;
+    letter-spacing: .005em;
+    color: var(--burdeos-hondo);
+    text-wrap: balance;
+  }
+
+  .filete {
+    width: 8rem;
+    height: 4px;
+    margin: 1.4rem auto;
+    border-top: 1px solid var(--oro);
+    border-bottom: 1px solid var(--oro);
+  }
+
+  .subtitulo {
+    max-width: 30ch;
+    margin: 0 auto 1.2rem;
+    font-style: italic;
+    font-size: clamp(1.2rem, 3.6vw, 1.45rem);
+    text-wrap: balance;
+  }
+
+  .lema {
+    margin: 0 0 2rem;
+    font-family: var(--titulos);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--tinta-suave);
+  }
+
+  .boton {
+    display: inline-block;
+    padding: .8rem 2rem;
+    background: var(--burdeos);
+    color: var(--pergamino-claro);
+    box-shadow: inset 0 0 0 4px var(--burdeos), inset 0 0 0 5px var(--oro);
+    font-family: var(--titulos);
+    font-size: 1.2rem;
+    letter-spacing: .02em;
+    text-decoration: none;
+    transition: background-color .2s ease;
+  }
+
+  .boton:hover { background-color: var(--burdeos-hondo); }
+
+  /* Secciones */
+  section { margin-top: 1rem; }
+
+  .divisor {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 3.5rem 0 2rem;
+    color: var(--oro);
+  }
+
+  .divisor::before,
+  .divisor::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .divisor svg { width: 1.5rem; height: 1.5rem; }
+
+  h2 {
+    margin: 0 0 1.5rem;
+    font-family: var(--titulos);
+    font-weight: 400;
+    font-size: clamp(1.8rem, 6vw, 2.3rem);
+    line-height: 1.2;
+    text-align: center;
+    color: var(--burdeos);
+  }
+
+  .texto p {
+    margin: 0 0 1.1rem;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+
+  /* Letra capital iluminada */
+  .texto p:first-child::first-letter {
+    float: left;
+    margin: .35rem .7rem 0 0;
+    padding: .18rem .5rem .1rem;
+    border: 3px double var(--oro-claro);
+    background: var(--burdeos);
+    color: var(--oro-claro);
+    font-family: var(--titulos);
+    font-size: 4.4rem;
+    line-height: .85;
+  }
+
+  /* Temas del canal, dispuestos como el índice de un libro */
+  .temas { margin: 0; }
+
+  .tema {
+    display: grid;
+    grid-template-columns: 14rem 1fr;
+    gap: 1.5rem;
+    padding: 1.1rem 0;
+    border-top: 1px solid rgba(176, 141, 58, .6);
+  }
+
+  .tema:last-child { border-bottom: 1px solid rgba(176, 141, 58, .6); }
+
+  .tema dt {
+    font-family: var(--titulos);
+    font-size: 1.4rem;
+    line-height: 1.25;
+    color: var(--burdeos);
+  }
+
+  .tema dd { margin: 0; }
+
+  .cierre { text-align: center; }
+
+  .cierre p {
+    max-width: 34ch;
+    margin: 0 auto 1.8rem;
+    text-wrap: balance;
+  }
+
+  footer {
+    max-width: 46rem;
+    margin: 2rem auto 0;
+    padding: 0 1.5rem 3rem;
+    text-align: center;
+    color: var(--tinta-suave);
+  }
+
+  footer .cruz {
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: .6rem;
+    color: var(--burdeos);
+  }
+
+  footer .lema { margin-bottom: .4rem; }
+
+  footer small { font-size: 1rem; }
+
+  @media (max-width: 40rem) {
+    body { font-size: 1.12rem; }
+    .tema { grid-template-columns: 1fr; gap: .3rem; }
+  }
+
+  /* Un único movimiento: la portada aparece al cargar */
+  @media (prefers-reduced-motion: no-preference) {
+    .portada { animation: aparece 1.4s ease both; }
+    @keyframes aparece { from { opacity: 0; } to { opacity: 1; } }
+  }
+</style>
+</head>
+<body>
+
+<!-- Cruz patada reutilizable -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="cruz" viewBox="0 0 100 100">
+    <g fill="currentColor">
+      <polygon points="45,45 41,6 59,6 55,45"/>
+      <polygon points="55,45 94,41 94,59 55,55"/>
+      <polygon points="55,55 59,94 41,94 45,55"/>
+      <polygon points="45,55 6,59 6,41 45,45"/>
+      <rect x="45" y="45" width="10" height="10"/>
+    </g>
+  </symbol>
+</svg>
+
+<main class="pagina">
+
+  <header class="portada">
+    <svg class="cruz" viewBox="0 0 100 100" aria-hidden="true"><use href="#cruz"/></svg>
+    <h1>Samuel Clavijo Apologética</h1>
+    <div class="filete" aria-hidden="true"></div>
+    <p class="subtitulo">Apologética católica en diálogo con los hermanos protestantes</p>
+    <p class="lema">Ad maiorem Dei gloriam</p>
+    <!-- CAMBIA el enlace por el de tu canal (aparece también al final de la página) -->
+    <a class="boton" href="https://www.youtube.com/@TU-CANAL">Ver el canal en YouTube</a>
+  </header>
+
+  <section aria-labelledby="quien-soy">
+    <div class="divisor" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#cruz"/></svg></div>
+    <h2 id="quien-soy">Quién soy</h2>
+    <div class="texto">
+      <p>Soy Samuel, seminarista. Estoy en el primer año de formación y me quedan cinco más por delante. Vengo del protestantismo, así que conozco de cerca las preguntas y las objeciones que se plantean a la fe católica.</p>
+      <p>En este canal explico la doctrina de la Iglesia con la Sagrada Escritura, los Padres y el Magisterio, y respondo a los argumentos protestantes con respeto y citando las fuentes. Busco que cada afirmación pueda comprobarse.</p>
+      <p>Mi intención la resume el lema de esta página: Ad maiorem Dei gloriam, para mayor gloria de Dios.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="temas">
+    <div class="divisor" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#cruz"/></svg></div>
+    <h2 id="temas">Temas del canal</h2>
+    <dl class="temas">
+      <div class="tema">
+        <dt>La justificación y las obras</dt>
+        <dd>Qué enseña la Iglesia sobre la fe, la gracia y las obras de misericordia.</dd>
+      </div>
+      <div class="tema">
+        <dt>Los Diez Mandamientos</dt>
+        <dd>Leyes verdaderas que hay que cumplir, y no solo un espejo de nuestra incapacidad.</dd>
+      </div>
+      <div class="tema">
+        <dt>La Iglesia y su unidad</dt>
+        <dd>El primado de Pedro y de Roma en los primeros siglos, y por qué la unidad no es opcional.</dd>
+      </div>
+      <div class="tema">
+        <dt>Los Padres de la Iglesia</dt>
+        <dd>Lo que escribieron san Agustín, san Ireneo o san Cipriano, leído en sus propios textos.</dd>
+      </div>
+      <div class="tema">
+        <dt>Purgatorio e indulgencias</dt>
+        <dd>La culpa y la pena, y lo que la Iglesia enseña de verdad sobre las indulgencias.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="cierre" aria-labelledby="canal">
+    <div class="divisor" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#cruz"/></svg></div>
+    <h2 id="canal">El canal</h2>
+    <p>Los vídeos están en YouTube. Se agradecen los comentarios y las preguntas, también de quienes no piensan como yo.</p>
+    <a class="boton" href="https://www.youtube.com/@TU-CANAL">Ver el canal en YouTube</a>
+  </section>
+
+</main>
+
+<footer>
+  <svg class="cruz" viewBox="0 0 100 100" aria-hidden="true"><use href="#cruz"/></svg>
+  <p class="lema">Ad maiorem Dei gloriam</p>
+  <small>© 2026 Samuel Clavijo</small>
+</footer>
+
+</body>
+</html>
